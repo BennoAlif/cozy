@@ -1,3 +1,4 @@
+import 'package:bwa_cozy/models/city.dart';
 import 'package:bwa_cozy/theme.dart';
 import 'package:bwa_cozy/widgets/city_card.dart';
 import 'package:flutter/material.dart';
@@ -47,14 +48,79 @@ class HomePage extends StatelessWidget {
                   ),
                 ),
               ),
-              Container(
+              const SizedBox(
+                height: 16,
+              ),
+              SizedBox(
                 height: 150,
                 child: ListView(
                   scrollDirection: Axis.horizontal,
                   children: [
-                    CityCard(),
-                    CityCard(),
-                    CityCard(),
+                    const SizedBox(
+                      width: 24,
+                    ),
+                    CityCard(
+                      city: City(
+                        id: 1,
+                        name: 'Jakarta',
+                        imageUrl: 'assets/city1.png',
+                      ),
+                    ),
+                    const SizedBox(
+                      width: 20,
+                    ),
+                    CityCard(
+                      city: City(
+                        id: 2,
+                        name: 'Bandung',
+                        imageUrl: 'assets/city2.png',
+                        isPopular: true,
+                      ),
+                    ),
+                    const SizedBox(
+                      width: 20,
+                    ),
+                    CityCard(
+                      city: City(
+                        id: 3,
+                        name: 'Surabaya',
+                        imageUrl: 'assets/city3.png',
+                      ),
+                    ),
+                    const SizedBox(
+                      width: 20,
+                    ),
+                    CityCard(
+                      city: City(
+                        id: 4,
+                        name: 'Palembang',
+                        imageUrl: 'assets/city4.png',
+                      ),
+                    ),
+                    const SizedBox(
+                      width: 20,
+                    ),
+                    CityCard(
+                      city: City(
+                        id: 5,
+                        name: 'Aceh',
+                        imageUrl: 'assets/city5.png',
+                        isPopular: true,
+                      ),
+                    ),
+                    const SizedBox(
+                      width: 20,
+                    ),
+                    CityCard(
+                      city: City(
+                        id: 6,
+                        name: 'Bogor',
+                        imageUrl: 'assets/city6.png',
+                      ),
+                    ),
+                    const SizedBox(
+                      width: 24,
+                    ),
                   ],
                 ),
               )
