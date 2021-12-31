@@ -1,12 +1,21 @@
 import 'package:bwa_cozy/theme.dart';
 import 'package:bwa_cozy/widgets/facility_item.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class DetailPage extends StatelessWidget {
   const DetailPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    launchUrl(String url) async {
+      if (await canLaunch(url)) {
+        launch(url);
+      } else {
+        throw (url);
+      }
+    }
+
     return Scaffold(
       backgroundColor: whiteColor,
       body: SafeArea(
@@ -231,9 +240,16 @@ class DetailPage extends StatelessWidget {
                               "Jln. Kapan Sukses No. 20\nPalembang",
                               style: greyTextStyle,
                             ),
-                            Image.asset(
-                              'assets/btn_map.png',
-                              width: 40,
+                            InkWell(
+                              onTap: () {
+                                launchUrl(
+                                  'https://goo.gl/maps/SyZx2yjWB1yR6AeH8',
+                                );
+                              },
+                              child: Image.asset(
+                                'assets/btn_map.png',
+                                width: 40,
+                              ),
                             ),
                           ],
                         ),
@@ -246,7 +262,9 @@ class DetailPage extends StatelessWidget {
                         height: 50,
                         width: MediaQuery.of(context).size.width - (2 * edge),
                         child: ElevatedButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            launchUrl('tel:+6281223230105');
+                          },
                           child: Text(
                             "Book Now",
                             style: whiteTextStyle.copyWith(
