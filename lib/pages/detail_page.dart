@@ -1,3 +1,4 @@
+import 'package:bwa_cozy/pages/error_pages.dart';
 import 'package:bwa_cozy/theme.dart';
 import 'package:bwa_cozy/widgets/facility_item.dart';
 import 'package:flutter/material.dart';
@@ -9,10 +10,16 @@ class DetailPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     launchUrl(String url) async {
-      if (await canLaunch(url)) {
+      if (await launch(url)) {
         launch(url);
       } else {
-        throw (url);
+        // throw (url);
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => const ErrorPage(),
+          ),
+        );
       }
     }
 
@@ -144,6 +151,7 @@ class DetailPage extends StatelessWidget {
                           horizontal: edge,
                         ),
                         child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: const [
                             FacilityItem(
                               name: 'kitchen',
@@ -243,8 +251,7 @@ class DetailPage extends StatelessWidget {
                             InkWell(
                               onTap: () {
                                 launchUrl(
-                                  'https://goo.gl/maps/SyZx2yjWB1yR6AeH8',
-                                );
+                                    'https://goo.gl/maps/SyZx2yjWB1yR6AeH8');
                               },
                               child: Image.asset(
                                 'assets/btn_map.png',
