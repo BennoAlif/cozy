@@ -16,7 +16,7 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var spaceProvider = Provider.of<SpaceProvider>(context);
-    spaceProvider.getRecommendedSpaces();
+
     return Scaffold(
       backgroundColor: whiteColor,
       body: SafeArea(
@@ -151,44 +151,23 @@ class HomePage extends StatelessWidget {
               height: 16,
             ),
             Padding(
-              padding: EdgeInsets.symmetric(
-                horizontal: edge,
-              ),
-              child: Column(
-                children: [
-                  SpaceCard(
-                    space: Space(
-                        id: 1,
-                        name: "Kuretakeso Hott",
-                        price: 52,
-                        city: "Bandung",
-                        country: "Indonesia",
-                        imageUrl: "assets/space1.png",
-                        rating: 4),
-                  ),
-                  SpaceCard(
-                    space: Space(
-                        id: 1,
-                        name: "Kuretakeso Hott",
-                        price: 52,
-                        city: "Bandung",
-                        country: "Indonesia",
-                        imageUrl: "assets/space2.png",
-                        rating: 4),
-                  ),
-                  SpaceCard(
-                    space: Space(
-                        id: 1,
-                        name: "Kuretakeso Hott",
-                        price: 52,
-                        city: "Bandung",
-                        country: "Indonesia",
-                        imageUrl: "assets/space3.png",
-                        rating: 4),
-                  ),
-                ],
-              ),
-            ),
+                padding: EdgeInsets.symmetric(
+                  horizontal: edge,
+                ),
+                child: FutureBuilder<List<Space>>(
+                  future: spaceProvider.getRecommendedSpaces(),
+                  builder: (context, snapshot) {
+                    if (snapshot.hasData) {
+                      List<Space> data = snapshot.data!;
+                      return Column(
+                        children: data.map((e) => SpaceCard(space: e)).toList(),
+                      );
+                    }
+                    return const Center(
+                      child: CircularProgressIndicator(),
+                    );
+                  },
+                )),
             Padding(
               padding: EdgeInsets.only(left: edge),
               child: Text(
