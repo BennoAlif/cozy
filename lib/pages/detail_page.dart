@@ -1,4 +1,5 @@
 import 'package:bwa_cozy/theme.dart';
+import 'package:bwa_cozy/widgets/facility_item.dart';
 import 'package:flutter/material.dart';
 
 class DetailPage extends StatelessWidget {
@@ -55,6 +56,7 @@ class DetailPage extends StatelessWidget {
                     color: whiteColor,
                   ),
                   child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       const SizedBox(
                         height: 30,
@@ -133,6 +135,45 @@ class DetailPage extends StatelessWidget {
                                 ),
                               ],
                             )
+                          ],
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 30,
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(left: edge),
+                        child: Text(
+                          "Main Facilities",
+                          style: regularTextStyle.copyWith(
+                            fontSize: 16,
+                          ),
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 12,
+                      ),
+                      Padding(
+                        padding: EdgeInsets.symmetric(
+                          horizontal: edge,
+                        ),
+                        child: Row(
+                          children: const [
+                            FacilityItem(
+                              name: 'kitchen',
+                              imageUrl: 'assets/icon_kitchen.png',
+                              total: 1,
+                            ),
+                            FacilityItem(
+                              name: 'bedroom',
+                              imageUrl: 'assets/icon_bedroom.png',
+                              total: 2,
+                            ),
+                            FacilityItem(
+                              name: 'Big Lemari',
+                              imageUrl: 'assets/icon_cupboard.png',
+                              total: 1,
+                            ),
                           ],
                         ),
                       ),
