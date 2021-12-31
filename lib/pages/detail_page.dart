@@ -177,6 +177,59 @@ class DetailPage extends StatelessWidget {
                           ],
                         ),
                       ),
+                      const SizedBox(
+                        height: 30,
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(left: edge),
+                        child: Text(
+                          "Photos",
+                          style: regularTextStyle.copyWith(
+                            fontSize: 16,
+                          ),
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 12,
+                      ),
+                      Container(
+                        height: 88,
+                        child: ListView(
+                          scrollDirection: Axis.horizontal,
+                          children: [
+                            SizedBox(
+                              width: edge,
+                            ),
+                            Image.asset(
+                              'assets/photo1.png',
+                              width: 110,
+                              height: 88,
+                              fit: BoxFit.cover,
+                            ),
+                            const SizedBox(
+                              width: 18,
+                            ),
+                            Image.asset(
+                              'assets/photo2.png',
+                              width: 110,
+                              height: 88,
+                              fit: BoxFit.cover,
+                            ),
+                            const SizedBox(
+                              width: 18,
+                            ),
+                            Image.asset(
+                              'assets/photo3.png',
+                              width: 110,
+                              height: 88,
+                              fit: BoxFit.cover,
+                            ),
+                            SizedBox(
+                              width: edge,
+                            ),
+                          ],
+                        ),
+                      ),
                     ],
                   ),
                 )
